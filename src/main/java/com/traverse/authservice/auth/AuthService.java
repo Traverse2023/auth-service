@@ -26,7 +26,9 @@ public class AuthService {
 
     public User createUser(User user) {
             user.setPassword(passwordEncoder.encode(user.getPassword()));
-            return userRepository.save(user);
+            User savedUser = userRepository.save(user);
+            log.info("New User created and successfully registered: {}", savedUser);
+            return savedUser;
     }
 
     public AuthResponse login(User user) {
@@ -34,11 +36,5 @@ public class AuthService {
         String accessToken = jwtUtil.generateToken(user, "ACCESS");
         return AuthResponse.builder().accessToken(accessToken).refreshToken(refreshToken).build();
     }
-
-    public Boolean validate(String token) {
-        return jwtUtil.validateToken(token);
-    }
-
-
 
 }

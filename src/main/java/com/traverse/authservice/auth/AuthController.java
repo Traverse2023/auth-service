@@ -28,7 +28,6 @@ public class AuthController {
         } catch(DataIntegrityViolationException e) {
             log.info(e.getMessage());
             return null;
-
         } catch (Exception e) {
             log.error("An unexpected error occurred: {}", e.toString());
             throw new RuntimeException(e.getMessage());
@@ -43,13 +42,9 @@ public class AuthController {
         if (authentication.isAuthenticated()) {
             return authService.login((User) authentication.getPrincipal());
         } else {
+            // TODO: custom exception handling
             throw new RuntimeException("Unable to authenticate user");
         }
-    }
-
-    @GetMapping("/validate")
-    public Boolean validateToken(@RequestParam("token") String token) {
-        return authService.validate(token);
     }
 
 }

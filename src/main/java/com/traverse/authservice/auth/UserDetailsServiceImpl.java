@@ -18,6 +18,10 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
        User user = userRepository.findByEmailWithId(email);
+       // TODO: Get all groups and roles from neo4j.
+        //  Set<SimpleGrantedAuthority> authorities = user.getRoleList().stream()
+        //  .map(Role::getRoleCode).map(SimpleGrantedAuthority::new).collect(Collectors.toSet());
+
        log.info("Loaded user by email: {}", user);
        return user;
     }
