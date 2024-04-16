@@ -1,0 +1,12 @@
+{
+  "properties": [
+    {
+      "name": "aws.endpoint",
+      "type": "java.lang.String"
+    },
+    {
+      "name": "aws.kms.keyId",
+      "type": "java.lang.String"
+    }
+  ]
+}
