@@ -7,11 +7,10 @@ spring:
       password: ${NEO4J_PASSWORD:password}
       username: ${NEO4j_USERNAME:neo4j}
 
+jwt:
+  key: ${JWT_SECRET_KEY:KS8LgP4/sYt6REp8xY7HYaLbHOkyJ1PPB4PFCKjZeI8=}
+
 server:
   port: 8050
 
-aws:
-  region: us-east-1
-  endpoint: ${AWS_ENDPOINT:#{null}}
-  kms:
-    keyId: ${JWT_KEY_ID:00000000-0000-0000-0000-000000000002}
+
