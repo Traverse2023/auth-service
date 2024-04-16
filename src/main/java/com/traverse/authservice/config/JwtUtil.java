@@ -1,6 +1,6 @@
 package com.traverse.authservice.config;
 
-import com.traverse.authservice.models.AppUserDetails;
+import com.traverse.authservice.models.User;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtParser;
 import io.jsonwebtoken.Jwts;
@@ -24,7 +24,7 @@ public class JwtUtil {
     @Value("${spring.jwt.key:KS8LgP4/sYt6REp8xY7HYaLbHOkyJ1PPB4PFCKjZeI8=}")
     private String key;
 
-    public String generateToken(AppUserDetails user, String tokenType ) {
+    public String generateToken(User user, String tokenType ) {
         Map<String, String> claims = Map.of(
                 "tokenType", tokenType,
                 "userId", user.getId(),

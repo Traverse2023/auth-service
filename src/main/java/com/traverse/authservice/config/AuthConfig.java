@@ -1,6 +1,6 @@
 package com.traverse.authservice.config;
 
-import com.traverse.authservice.models.UserDetailsServiceImpl;
+import com.traverse.authservice.auth.UserDetailsServiceImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;

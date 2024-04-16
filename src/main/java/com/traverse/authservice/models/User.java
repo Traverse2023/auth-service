@@ -1,9 +1,7 @@
 package com.traverse.authservice.models;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import org.springframework.data.neo4j.core.schema.GeneratedValue;
 import org.springframework.data.neo4j.core.schema.Id;
 import org.springframework.data.neo4j.core.schema.Node;
 import org.springframework.security.core.GrantedAuthority;
@@ -14,7 +12,7 @@ import java.util.Collection;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Node("User")
 @Data
-public class AppUserDetails implements UserDetails {
+public class User implements UserDetails {
     @Id
     private String id;
     private String username;

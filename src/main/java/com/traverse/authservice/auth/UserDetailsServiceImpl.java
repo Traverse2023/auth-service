@@ -1,6 +1,6 @@
-package com.traverse.authservice.models;
+package com.traverse.authservice.auth;
 
-import com.traverse.authservice.auth.AppUserRepository;
+import com.traverse.authservice.models.User;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -17,7 +17,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-       AppUserDetails user = userRepository.findByEmailWithId(email);
+       User user = userRepository.findByEmailWithId(email);
        log.info("Loaded user by email: {}", user);
        return user;
     }

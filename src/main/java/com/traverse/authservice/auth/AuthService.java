@@ -1,7 +1,7 @@
 package com.traverse.authservice.auth;
 
 import com.traverse.authservice.config.JwtUtil;
-import com.traverse.authservice.models.AppUserDetails;
+import com.traverse.authservice.models.User;
 import com.traverse.authservice.models.AuthResponse;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -24,12 +24,12 @@ public class AuthService {
     private PasswordEncoder passwordEncoder;
 
 
-    public AppUserDetails createUser(AppUserDetails user) {
+    public User createUser(User user) {
             user.setPassword(passwordEncoder.encode(user.getPassword()));
             return userRepository.save(user);
     }
 
-    public AuthResponse login(AppUserDetails user) {
+    public AuthResponse login(User user) {
         String refreshToken = jwtUtil.generateToken(user,"REFRESH");
         String accessToken = jwtUtil.generateToken(user, "ACCESS");
         return AuthResponse.builder().accessToken(accessToken).refreshToken(refreshToken).build();
