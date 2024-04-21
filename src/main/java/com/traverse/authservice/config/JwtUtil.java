@@ -18,13 +18,13 @@ import java.util.function.Function;
 @Service
 public class JwtUtil {
 
-    private static final int ACCESS_TOKEN_EXPIRE_MS = 60*1000*5;
-    private static final int REFRESH_TOKEN_EXPIRE_MS = 60*1000*1000;
+    private static final int ACCESS_TOKEN_EXPIRE_MS = 60 * 1000 * 5;
+    private static final int REFRESH_TOKEN_EXPIRE_MS = 60 * 1000 * 1000;
 
     @Value("${jwt.key}")
     private String key;
 
-    public String generateToken(User user, String tokenType ) {
+    public String generateToken(User user, String tokenType) {
         Map<String, String> claims = Map.of(
                 "tokenType", tokenType,
                 "userId", user.getId(),
@@ -33,7 +33,7 @@ public class JwtUtil {
 
         final long exp = "ACCESS".equalsIgnoreCase(tokenType) ? ACCESS_TOKEN_EXPIRE_MS : REFRESH_TOKEN_EXPIRE_MS;
         final Date issuedAt = new Date(System.currentTimeMillis());
-        final Date expiration = new Date(System.currentTimeMillis()+exp);
+        final Date expiration = new Date(System.currentTimeMillis() + exp);
 
         return Jwts.builder()
                 .setClaims(claims)
@@ -48,5 +48,6 @@ public class JwtUtil {
     public Key getKey() {
         return new SecretKeySpec(Base64.getDecoder().decode(key), SignatureAlgorithm.HS512.getJcaName());
     }
+
 
 }

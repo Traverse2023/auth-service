@@ -26,6 +26,7 @@ public class AuthController {
         try {
             return authService.createUser(user);
         } catch(DataIntegrityViolationException e) {
+            // TODO: custom exception handling
             log.info(e.getMessage());
             return null;
         } catch (Exception e) {
