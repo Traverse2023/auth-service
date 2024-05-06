@@ -18,8 +18,8 @@ import java.util.function.Function;
 @Service
 public class JwtUtil {
 
-    private static final int ACCESS_TOKEN_EXPIRE_MS = 60 * 1000 * 5;
-    private static final int REFRESH_TOKEN_EXPIRE_MS = 60 * 1000 * 1000;
+    private static final int ACCESS_TOKEN_EXPIRE_MS = 60 * 1000 * 10000;
+    private static final int REFRESH_TOKEN_EXPIRE_MS = 60 * 1000 * 10000;
 
     @Value("${jwt.key}")
     private String key;

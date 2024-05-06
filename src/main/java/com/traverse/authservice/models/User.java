@@ -19,6 +19,7 @@ public class User implements UserDetails {
     private String password;
     private String lastName;
     private String firstName;
+    private String pfpUrl;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
