@@ -26,9 +26,7 @@ public class AuthService {
 
     public User createUser(User user) {
             user.setPassword(passwordEncoder.encode(user.getPassword()));
-            User savedUser = userRepository.createUser(user);
-            log.info("New User created and successfully registered: {}", savedUser);
-            return savedUser;
+        return userRepository.createUser(user);
     }
 
     public AuthResponse login(User user) {
