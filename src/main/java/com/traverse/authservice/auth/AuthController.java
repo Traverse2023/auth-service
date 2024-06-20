@@ -22,18 +22,11 @@ public class AuthController {
     private AuthenticationManager authenticationManager;
 
     @PostMapping("/register")
-    public void register(@RequestBody User user) {
+    public User register(@RequestBody User user) {
         log.info("Registering user: {}", user);
-        try {
-            log.info("Successfully created user: {}", authService.createUser(user));
-            return;
-        } catch(DataIntegrityViolationException e) {
-            // TODO: custom exception handling
-            log.info(e.getMessage());
-        } catch (Exception e) {
-            log.error("An unexpected error occurred: {}", e.toString());
-            throw new RuntimeException(e.getMessage());
-        }
+        final User createdUser = authService.createUser(user);
+        log.info("Successfully created user: {}", createdUser);
+        return createdUser;
     }
 
     @PostMapping("/login")
