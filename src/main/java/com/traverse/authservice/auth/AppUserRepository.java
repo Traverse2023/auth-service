@@ -10,7 +10,7 @@ public interface AppUserRepository extends Neo4jRepository<User, String> {
 
     // Create
     @Query("CREATE (n: User { username: :#{#user.username}, firstName: :#{#user.firstName}, lastName: :#{#user.lastName}, password: :#{#user.password}, pfpUrl: :#{#user.pfpUrl}}) " +
-            "RETURN {id:elementId(n), username:n.username, firstName:n.firstName, lastName:n.lastName, pfpUrl:n.pfpURL}")
+            "RETURN {id:elementId(n), username:n.username, firstName:n.firstName, lastName:n.lastName, pfpUrl:n.pfpUrl}")
     User createUser(User user);
 
 
