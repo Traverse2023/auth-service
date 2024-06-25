@@ -25,7 +25,7 @@ public class AuthConfig {
                 .httpBasic(AbstractHttpConfigurer::disable)
                 .formLogin(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests((authorize) -> authorize
-                .requestMatchers("/auth/register", "/auth/login").permitAll()).build();
+                .requestMatchers("/auth/register", "/auth/login", "/actuator/*").permitAll()).build();
     }
 
     @Bean
