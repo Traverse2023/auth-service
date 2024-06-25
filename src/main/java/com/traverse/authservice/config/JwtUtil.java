@@ -44,10 +44,11 @@ public class JwtUtil {
                 .signWith(getKey())
                 .compact();
     }
-
+   
     public Key getKey() {
         return new SecretKeySpec(Base64.getDecoder().decode(key), SignatureAlgorithm.HS512.getJcaName());
     }
+
 
 
 }
