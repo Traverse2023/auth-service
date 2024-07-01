@@ -24,7 +24,8 @@ public class Neo4jRun {
     @PostConstruct
     public void createIndexesAndConstraints() {
         try {
-            client.query("CREATE CONSTRAINT IF NOT EXISTS FOR (u:User) REQUIRE u.email IS UNIQUE").run();
+            log.info("Creating indexes and constraints...");
+            client.query("CREATE CONSTRAINT IF NOT EXISTS FOR (u:User) REQUIRE u.username IS UNIQUE").run();
         } catch (Exception e) {
             log.error("Exception creating uniqueness constraint for User: {}", e.getMessage());
         }
