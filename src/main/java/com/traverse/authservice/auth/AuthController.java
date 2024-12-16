@@ -31,6 +31,7 @@ public class AuthController {
 
     @PostMapping("/login")
     public AuthResponse login(@RequestBody User user) {
+        log.info("Logging in user: {}", user);
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword())
         );
